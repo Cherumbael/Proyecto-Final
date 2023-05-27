@@ -12,6 +12,34 @@ document.querySelector('#menu-btn').onclick = () =>{
     navbar.classList.toggle('active');
 }
 
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+  } else {
+    document.getElementById("Ubicacion").innerHTML = "Tu navegador no soporta Geolocalización.";
+  }
+
+  function showPosition(position) {
+    var latitud = position.coords.latitude;
+    var longitud = position.coords.longitude;
+
+    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitud}&lon=${longitud}&format=json`)
+      .then(response => response.json())
+      .then(data => {
+        var pais = data.address.country;
+        var region = data.address.state;
+        document.getElementById("Ubicacion").innerHTML = "Ubicación actual: País: " + pais + ", Región: " + region;
+      })
+      .catch(error => {
+        console.log(error);
+        showError();
+      });
+  }
+
+  function showError() {
+    document.getElementById("Ubicacion").innerHTML = "No se pudo obtener la ubicación.";
+  }
+
+
 window.onscroll = () =>{
     login.classList.remove('active');
     navbar.classList.remove('active');
@@ -26,6 +54,15 @@ window.onscroll = () =>{
             descripcion.style.display = "none";
         }
     }
+
+    function updateClock() {
+        var now = new Date();
+        var time = now.toLocaleTimeString();
+        document.getElementById('clock').textContent = time;
+      }
+      
+      setInterval(updateClock, 1000);
+      
 
 
 var swiper = new Swiper(".gallery-slider", {
