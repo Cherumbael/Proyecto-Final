@@ -17,6 +17,17 @@ window.onscroll = () =>{
     navbar.classList.remove('active');
 }
 
+
+    function mostrarDetalles() {
+        var descripcion = document.getElementById("descripcion");
+        if (descripcion.style.display === "none") {
+            descripcion.style.display = "block";
+        } else {
+            descripcion.style.display = "none";
+        }
+    }
+
+
 var swiper = new Swiper(".gallery-slider", {
     grabCursor:true,
     loop:true,
