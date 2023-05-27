@@ -1,3 +1,6 @@
+#Ubicacion {
+  font-size: 10px; 
+}
 
 :root{
   --main: #bc872595;
@@ -312,7 +315,6 @@ section{
 .swiper-button-prev{
   color: var(--white);
 }
-
 
 
 .animal .box-container{
