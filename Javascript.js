@@ -12,6 +12,7 @@ document.querySelector('#menu-btn').onclick = () =>{
     navbar.classList.toggle('active');
 }
 
+
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
   } else {
