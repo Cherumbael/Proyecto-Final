@@ -37,6 +37,7 @@ if (navigator.geolocation) {
   }
 
 
+
   function showError() {
     document.getElementById("Ubicacion").innerHTML = "No se pudo obtener la ubicación.";
   }
